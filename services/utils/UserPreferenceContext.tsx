@@ -11,3 +11,8 @@ const UserPreferenceContext = createContext<UserPreferenceContextProps>({
 });
 
 export const UPrefCtxt = () => useContext(UserPreferenceContext);
+
+export interface NavigationAndRouteProps {
+	navigation: any;
+	route: any;
+}

@@ -1,35 +1,61 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import React, { useState } from "react";
 import { globalstyles, themeMode } from "../../styles/globalStyle";
-import { CredentialInput } from "../../components/ui/Login";
+import {
+	ActionButton,
+	CredentialInput,
+	InstantBalance,
+	LoginPreferences,
+} from "../../components/ui/Login";
+import { StandardButton } from "../../components/shared";
+import * as Linking from "expo-linking";
+import { NavigationAndRouteProps } from "../../services/utils/UserPreferenceContext";
 
-export default function LoginScreen() {
+const priStmt =
+	"https://www.commercebank.com/security-center/privacy-statement";
+
+export default function LoginScreen({ navigation }: NavigationAndRouteProps) {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
-
+	const [rememberMe, toggleRememberMe] = useState<boolean>(false);
 	const { themeContainer, themeContent, themeText, themeBcolor } =
 		themeMode();
+	const [instantBal, setInstantBal] = useState<boolean>(false);
 
 	const userFogot = () => {};
+
+	const rememberMeHandler = () => {
+		toggleRememberMe((prev) => !prev);
+	};
+
+	const closeInstantBal = () => {
+		setInstantBal((prev) => !prev);
+	};
+	const displayCustomerSupport = () => {
+		navigation.navigate("SupportScreen");
+	};
+
+	const bioLoginHandler = () => {};
+
 	return (
 		<View
 			style={[globalstyles.container, themeContainer, styles.container]}
 		>
-			<View style={[globalstyles.vCtr, styles.main]}>
+			<InstantBalance
+				isVisible={instantBal}
+				closeInstantBal={closeInstantBal}
+			/>
+			<View style={[themeContent, styles.main]}>
 				<View
 					style={[
 						globalstyles.hCtr,
 						{ justifyContent: "flex-start" },
 					]}
 				>
-					<View>{/* <Image source={require("")} /> */}</View>
-
-					<View>
-						<Text style={[themeText]}>Commerce Bank</Text>
-						<View>
-							<Text style={[themeText]}>Member FDIC</Text>
-						</View>
-					</View>
+					<Image
+						source={require("../../assets/Img/cmBankLogo.png")}
+						style={[styles.logo]}
+					/>
 				</View>
 
 				<CredentialInput
@@ -39,6 +65,7 @@ export default function LoginScreen() {
 					isPass={false}
 					forgotHandler={userFogot}
 					placeholder="Username"
+					autoFocus={true}
 				/>
 				<CredentialInput
 					emicon="Password"
@@ -48,8 +75,34 @@ export default function LoginScreen() {
 					forgotHandler={userFogot}
 					placeholder="Password"
 				/>
+
+				<LoginPreferences
+					rememberMe={rememberMe}
+					rememberMeHandler={rememberMeHandler}
+					bioMetricsHandler={bioLoginHandler}
+				/>
+
+				<StandardButton
+					title="Login"
+					bg={themeContainer.backgroundColor}
+					onPress={() => {}}
+				/>
+				<View style={[globalstyles.hCtr]}>
+					<Text
+						style={[globalstyles.txt]}
+						onPress={() => Linking.openURL(priStmt)}
+					>
+						Privacy Statement
+					</Text>
+				</View>
 			</View>
-			<View style={[]}></View>
+
+			<View style={[]}>
+				<ActionButton
+					displayInstantBal={closeInstantBal}
+					displayCustomerSupport={displayCustomerSupport}
+				/>
+			</View>
 		</View>
 	);
 }
@@ -57,6 +110,7 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
 	container: {
 		gap: 10,
+		justifyContent: "space-between",
 	},
 	devCtr: {
 		width: 200,
@@ -65,5 +119,11 @@ const styles = StyleSheet.create({
 	header: {},
 	main: {
 		gap: 20,
-	}
+		padding: 10,
+	},
+	logo: {
+		width: "100%",
+		height: 100,
+		resizeMode: "cover",
+	},
 });

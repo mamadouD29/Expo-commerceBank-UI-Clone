@@ -1,11 +1,10 @@
 import { StyleSheet } from "react-native";
 import { UPrefCtxt } from "../services/utils/UserPreferenceContext";
 
-
 export const globalstyles = StyleSheet.create({
 	container: {
 		flex: 1,
-		padding: 20,
+		padding: 10,
 	},
 	hCtr: {
 		flexDirection: "row",
@@ -20,6 +19,10 @@ export const globalstyles = StyleSheet.create({
 		gap: 5,
 	},
 	bolder: {
+		fontWeight: "bold",
+	},
+	txt: {
+		color: "#0ea5e9",
 		fontWeight: "bold",
 	},
 });
