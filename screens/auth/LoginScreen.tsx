@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, Image, Pressable } from "react-native";
+import {
+	StyleSheet,
+	Text,
+	View,
+	Image,
+	Pressable,
+	ScrollView,
+} from "react-native";
 import React, { useState } from "react";
 import { globalstyles, themeMode } from "../../styles/globalStyle";
 import {
@@ -6,7 +13,7 @@ import {
 	CredentialInput,
 	InstantBalance,
 	LoginPreferences,
-} from "../../components/ui/Login";
+} from "../../components/ui/login";
 import { StandardButton } from "../../components/shared";
 import * as Linking from "expo-linking";
 import { NavigationAndRouteProps } from "../../services/utils/UserPreferenceContext";
@@ -37,8 +44,12 @@ export default function LoginScreen({ navigation }: NavigationAndRouteProps) {
 
 	const bioLoginHandler = () => {};
 
+	const loginHandler = () => {
+		navigation.replace("AccountScreen");
+	};
+
 	return (
-		<View
+		<ScrollView
 			style={[globalstyles.container, themeContainer, styles.container]}
 		>
 			<InstantBalance
@@ -85,7 +96,7 @@ export default function LoginScreen({ navigation }: NavigationAndRouteProps) {
 				<StandardButton
 					title="Login"
 					bg={themeContainer.backgroundColor}
-					onPress={() => {}}
+					onPress={loginHandler}
 				/>
 				<View style={[globalstyles.hCtr]}>
 					<Text
@@ -103,14 +114,13 @@ export default function LoginScreen({ navigation }: NavigationAndRouteProps) {
 					displayCustomerSupport={displayCustomerSupport}
 				/>
 			</View>
-		</View>
+		</ScrollView>
 	);
 }
 
 const styles = StyleSheet.create({
 	container: {
 		gap: 10,
-		justifyContent: "space-between",
 	},
 	devCtr: {
 		width: 200,

@@ -24,6 +24,20 @@ export function EmIcons({ title, color, size }: EmIconsProps) {
 					color={color ?? "black"}
 				/>
 			)}
+			{title === "Shield" && (
+				<MaterialCommunityIcons
+					name="shield-plus"
+					size={size ?? 24}
+					color={color ?? "black"}
+				/>
+			)}
+			{title === "Hand" && (
+				<MaterialCommunityIcons
+					name="hand-extended-outline"
+					size={size ?? 24}
+					color={color ?? "black"}
+				/>
+			)}
 			{title === "User" && (
 				<FontAwesome5
 					name="user-circle"
@@ -63,6 +77,13 @@ export function EmIcons({ title, color, size }: EmIconsProps) {
 			{title === "Right" && (
 				<Ionicons
 					name="chevron-forward-circle-outline"
+					size={size ?? 24}
+					color={color ?? "black"}
+				/>
+			)}
+			{title === "Add" && (
+				<Ionicons
+					name="md-add-circle-outline"
 					size={size ?? 24}
 					color={color ?? "black"}
 				/>
