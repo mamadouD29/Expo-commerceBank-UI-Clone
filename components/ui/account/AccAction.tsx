@@ -22,8 +22,7 @@ export function AccAction({
 	onPress,
 	id,
 }: AccActionProps) {
-	const { themeContainer, themeContent, themeText, themeBcolor } =
-		themeMode();
+	const { themeContent, themeText, themeBcolor } = themeMode();
 	return (
 		<View
 			style={[

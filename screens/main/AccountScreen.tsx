@@ -1,7 +1,15 @@
-import { Linking, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+	Linking,
+	Pressable,
+	ScrollView,
+	StyleSheet,
+	Text,
+	View,
+} from "react-native";
 import React from "react";
 import { globalstyles, themeMode } from "../../styles/globalStyle";
 import { AccAction, CmrAdvance, Dot } from "../../components/ui/account";
+import { NavigationAndRouteProps } from "../../services/utils/UserPreferenceContext";
 
 const acc = [
 	{
@@ -29,13 +37,17 @@ const acc = [
 		size: 20,
 	},
 ];
-export function AccountScreen() {
+export function AccountScreen({ navigation }: NavigationAndRouteProps) {
 	const { themeContainer, themeContent, themeText, themeBcolor } =
 		themeMode();
 
 	const learnMore = () => {};
 
 	const handlePress = (id: number) => {
+		if (id === 2) {
+			navigation.navigate("TheftServicesScreen");
+			return;
+		}
 		if (id === 3) {
 			Linking.openURL("https://www.commercebank.com/");
 		}
