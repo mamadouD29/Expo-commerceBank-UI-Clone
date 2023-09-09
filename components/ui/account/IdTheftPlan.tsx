@@ -16,7 +16,7 @@ interface IdTheftPlanProps {
 	bg?: string;
 }
 
-export default function IdTheftPlan({
+export function IdTheftPlan({
 	title,
 	textSnipet,
 	onPress,

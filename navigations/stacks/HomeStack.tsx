@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen from "../../screens/auth/LoginScreen";
 import { AccountScreen, SupportScreen } from "../../screens/main";
-import { TheftServicesScreen } from "../../screens/main/account";
+import { AccountDetailsScreen, TheftServicesScreen } from "../../screens/main/account";
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +26,11 @@ export default function HomeStack() {
 			<Stack.Screen
 				name="TheftServicesScreen"
 				component={TheftServicesScreen}
+				options={{ title: "" }}
+			/>
+			<Stack.Screen
+				name="AccountDetailsScreen"
+				component={AccountDetailsScreen}
 				options={{ title: "" }}
 			/>
 		</Stack.Navigator>

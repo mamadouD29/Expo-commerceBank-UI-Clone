@@ -3,7 +3,7 @@ import React from "react";
 import { globalstyles, themeMode } from "../../../styles/globalStyle";
 import { IdTheftPlan } from "../../../components/ui/account";
 
-export default function TheftServicesScreen() {
+export function TheftServicesScreen() {
 	const { themeText } = themeMode();
 
 	const idMonitorHandler = () => {};

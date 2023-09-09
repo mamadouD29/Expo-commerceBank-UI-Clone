@@ -6,6 +6,8 @@ import {
 	MaterialIcons,
 	AntDesign,
 	Ionicons,
+	Feather,
+	FontAwesome,
 } from "@expo/vector-icons";
 
 interface EmIconsProps {
@@ -38,6 +40,13 @@ export function EmIcons({ title, color, size }: EmIconsProps) {
 					color={color ?? "black"}
 				/>
 			)}
+			{title === "Pound" && (
+				<MaterialCommunityIcons
+					name="pound"
+					size={size ?? 24}
+					color={color ?? "black"}
+				/>
+			)}
 			{title === "User" && (
 				<FontAwesome5
 					name="user-circle"
@@ -56,6 +65,27 @@ export function EmIcons({ title, color, size }: EmIconsProps) {
 			{title === "Map" && (
 				<FontAwesome5
 					name="map-marked-alt"
+					size={size ?? 24}
+					color={color ?? "black"}
+				/>
+			)}
+			{title === "Checks" && (
+				<FontAwesome5
+					name="money-check"
+					size={size ?? 24}
+					color={color ?? "black"}
+				/>
+			)}
+			{title === "Pen" && (
+				<FontAwesome
+					name="pencil-square-o"
+					size={size ?? 24}
+					color={color ?? "black"}
+				/>
+			)}
+			{title === "Bars" && (
+				<FontAwesome
+					name="bars"
 					size={size ?? 24}
 					color={color ?? "black"}
 				/>
@@ -81,9 +111,58 @@ export function EmIcons({ title, color, size }: EmIconsProps) {
 					color={color ?? "black"}
 				/>
 			)}
+			{title === "Time" && (
+				<Ionicons
+					name="md-close-outline"
+					size={size ?? 24}
+					color={color ?? "black"}
+				/>
+			)}
 			{title === "Add" && (
 				<Ionicons
 					name="md-add-circle-outline"
+					size={size ?? 24}
+					color={color ?? "black"}
+				/>
+			)}
+			{title === "Down" && (
+				<Ionicons
+					name="arrow-down-circle-outline"
+					size={size ?? 24}
+					color={color ?? "black"}
+				/>
+			)}
+			{title === "Up" && (
+				<Ionicons
+					name="arrow-up-circle-outline"
+					size={size ?? 24}
+					color={color ?? "black"}
+				/>
+			)}
+			{title === "Documents" && (
+				<Ionicons
+					name="documents-outline"
+					size={size ?? 24}
+					color={color ?? "black"}
+				/>
+			)}
+			{title === "Credit" && (
+				<Feather
+					name="credit-card"
+					size={size ?? 24}
+					color={color ?? "black"}
+				/>
+			)}
+			{title === "Users" && (
+				<Feather
+					name="users"
+					size={size ?? 24}
+					color={color ?? "black"}
+				/>
+			)}
+			{title === "Live" && (
+				<Feather
+					name="refresh-ccw"
 					size={size ?? 24}
 					color={color ?? "black"}
 				/>

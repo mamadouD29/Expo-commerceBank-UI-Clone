@@ -44,6 +44,9 @@ export function AccountScreen({ navigation }: NavigationAndRouteProps) {
 	const learnMore = () => {};
 
 	const handlePress = (id: number) => {
+		if (id === 1) {
+			navigation.navigate("AccountDetailsScreen");
+		}
 		if (id === 2) {
 			navigation.navigate("TheftServicesScreen");
 			return;
@@ -59,7 +62,7 @@ export function AccountScreen({ navigation }: NavigationAndRouteProps) {
 		>
 			<View style={[styles.balCtr, themeBcolor]}>
 				<Pressable
-					onPress={() => {}}
+					onPress={() => handlePress(1)}
 					style={({ pressed }) => [
 						themeContent,
 						themeBcolor,

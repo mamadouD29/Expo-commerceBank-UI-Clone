@@ -1,6 +1,9 @@
-import TheftServicesScreen from "./TheftServicesScreen"
+import {AccountDetailsScreen} from "./AccountDetailsScreen"
+import {TheftServicesScreen} from "./TheftServicesScreen"
+
 
 export {
+    AccountDetailsScreen,
     TheftServicesScreen,
 
 }
