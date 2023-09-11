@@ -8,6 +8,8 @@ import {
 	Ionicons,
 	Feather,
 	FontAwesome,
+	SimpleLineIcons,
+	Entypo,
 } from "@expo/vector-icons";
 
 interface EmIconsProps {
@@ -111,6 +113,13 @@ export function EmIcons({ title, color, size }: EmIconsProps) {
 					color={color ?? "black"}
 				/>
 			)}
+			{title === "Pencil" && (
+				<Ionicons
+					name="pencil"
+					size={size ?? 24}
+					color={color ?? "black"}
+				/>
+			)}
 			{title === "Time" && (
 				<Ionicons
 					name="md-close-outline"
@@ -166,6 +175,23 @@ export function EmIcons({ title, color, size }: EmIconsProps) {
 					size={size ?? 24}
 					color={color ?? "black"}
 				/>
+			)}
+			{title === "Envelop" && (
+				<SimpleLineIcons
+					name="envelope-letter"
+					size={size ?? 24}
+					color={color ?? "black"}
+				/>
+			)}
+			{title === "Exclamation" && (
+				<SimpleLineIcons
+					name="exclamation"
+					size={size ?? 24}
+					color={color ?? "black"}
+				/>
+			)}
+			{title === "Document" && (
+				<Entypo name="text-document" size={size ?? 24} color={color ?? "black"} />
 			)}
 		</>
 	);

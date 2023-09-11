@@ -1,4 +1,11 @@
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+	Pressable,
+	ScrollView,
+	StyleSheet,
+	Text,
+	View,
+	Modal,
+} from "react-native";
 import React, { useReducer, useState } from "react";
 import { globalstyles, themeMode } from "../../../styles/globalStyle";
 import {
@@ -6,6 +13,8 @@ import {
 	CmrAdvance,
 	OptionCard,
 	ReferFriend,
+	SettingsButton,
+	SettingsModal,
 } from "../../../components/ui/account";
 import { setStringAsync } from "expo-clipboard";
 import { CopiedModal, EmIcons } from "../../../components/shared";
@@ -66,7 +75,7 @@ export function AccountDetailsScreen() {
 	const { themeContainer } = themeMode();
 	const [seeMoreLess, setSeeMoreLess] = useState<boolean>(false);
 	const [isVisible, setIsVisible] = useState<boolean>(false);
-	const [settings, toggleSettings] = useState<boolean>(false);
+	const [settings, toggleSettings] = useState<boolean>(true);
 
 	const seeMoreLessHandler = () => {
 		setSeeMoreLess((prev) => !prev);
@@ -96,8 +105,16 @@ export function AccountDetailsScreen() {
 					themeContainer,
 					styles.container,
 				]}
-				contentContainerStyle={[{ gap: 10, paddingBottom: 20 }]}
+				contentContainerStyle={[{ gap: 10, paddingBottom: 50 }]}
 			>
+				<Modal visible={settings}>
+					<SettingsModal name="Mamadou" onPress={()=>{}}/>
+					<SettingsButton
+						settings={settings}
+						toggleSettingHandler={toggleSettingHandler}
+					/>
+				</Modal>
+
 				<CopiedModal isVisible={isVisible} />
 				<BalanceCard
 					seeMoreLess={seeMoreLess}
@@ -121,8 +138,7 @@ export function AccountDetailsScreen() {
 					id={2}
 					display="View"
 				/>
-				<CmrAdvance learnMore={learnMore} end={true} br={true}/>
-
+				<CmrAdvance learnMore={learnMore} end={true} br={true} />
 				<OptionCard
 					emicon="Pound"
 					title="Routing & Accont Number"
@@ -146,7 +162,6 @@ export function AccountDetailsScreen() {
 					id={4}
 					display="Manage"
 				/>
-
 				<OptionCard
 					emicon="Pen"
 					title="Account Nikname"
@@ -181,24 +196,10 @@ export function AccountDetailsScreen() {
 				/>
 				<ReferFriend />
 			</ScrollView>
-			<View
-				style={[
-					globalstyles.hCtr,
-					styles.btnCtr,
-					{ backgroundColor: "#22c55e" },
-				]}
-			>
-				<Pressable
-					onPress={toggleSettingHandler}
-					style={[globalstyles.hCtr, styles.btn]}
-				>
-					{settings ? (
-						<EmIcons title="Time" size={36} color="#ffff" />
-					) : (
-						<EmIcons title="Bars" size={36} color="#ffff" />
-					)}
-				</Pressable>
-			</View>
+			<SettingsButton
+				settings={settings}
+				toggleSettingHandler={toggleSettingHandler}
+			/>
 		</>
 	);
 }

@@ -13,7 +13,8 @@ import {
 	CredentialInput,
 	InstantBalance,
 	LoginPreferences,
-} from "../../components/ui/login";
+} from "../../components/ui/login/index";
+
 import { StandardButton } from "../../components/shared";
 import * as Linking from "expo-linking";
 import { NavigationAndRouteProps } from "../../services/utils/UserPreferenceContext";
